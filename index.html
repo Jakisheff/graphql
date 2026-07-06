@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphQL Profile</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <section id="login-view" class="view hidden">
+    <div class="login-card">
+      <h1 class="login-title">Welcome back</h1>
+      <p class="login-subtitle">Sign in with your username or email</p>
+
+      <form id="login-form" novalidate>
+        <label class="field">
+          <span>Username or email</span>
+          <input type="text" id="identifier" autocomplete="username" required />
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="password" autocomplete="current-password" required />
+        </label>
+
+        <p id="login-error" class="login-error hidden"></p>
+
+        <button type="submit" id="login-btn" class="btn-primary">Sign in</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== PROFILE VIEW ===================== -->
+  <section id="profile-view" class="view hidden">
+    <header class="topbar">
+      <div class="brand">GraphQL<span>Profile</span></div>
+      <div class="topbar-right">
+        <span id="header-login" class="header-login"></span>
+        <a href="graphiql.html" class="btn-ghost btn-link">GraphiQL</a>
+        <button id="logout-btn" class="btn-ghost">Log out</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <p id="profile-loading" class="loading">Loading your data…</p>
+      <p id="profile-error" class="profile-error hidden"></p>
+
+      <div id="profile-body" class="hidden">
+
+        <!-- ===== Info cards ===== -->
+        <section class="cards-grid">
+          <article class="card" id="card-user">
+            <h2 class="card-title">Identity</h2>
+            <div class="identity">
+              <div class="avatar" id="avatar"></div>
+              <div>
+                <p class="identity-name" id="user-name"></p>
+                <p class="identity-login" id="user-login"></p>
+                <p class="identity-meta" id="user-meta"></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="card-xp">
+            <h2 class="card-title">Experience</h2>
+            <p class="big-number" id="total-xp"></p>
+            <p class="card-note" id="xp-note"></p>
+          </article>
+
+          <article class="card" id="card-audits">
+            <h2 class="card-title">Audits</h2>
+            <p class="big-number" id="audit-ratio"></p>
+            <div class="audit-bars">
+              <div class="audit-row">
+                <span>Done</span>
+                <div class="bar-track"><div class="bar-fill up" id="audit-up-bar"></div></div>
+                <span id="audit-up"></span>
+              </div>
+              <div class="audit-row">
+                <span>Received</span>
+                <div class="bar-track"><div class="bar-fill down" id="audit-down-bar"></div></div>
+                <span id="audit-down"></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="card-projects">
+            <h2 class="card-title">Projects</h2>
+            <p class="big-number" id="projects-passed"></p>
+            <p class="card-note" id="projects-note"></p>
+          </article>
+        </section>
+
+        <!-- ===== Statistics (SVG graphs) ===== -->
+        <h2 class="section-title">Statistics</h2>
+        <section class="charts-grid">
+          <article class="card chart-card wide">
+            <h3 class="card-title">XP progress over time</h3>
+            <div id="chart-xp-time" class="chart"></div>
+          </article>
+
+          <article class="card chart-card wide">
+            <h3 class="card-title">XP earned by project</h3>
+            <div id="chart-xp-project" class="chart"></div>
+          </article>
+
+          <article class="card chart-card">
+            <h3 class="card-title">Audit ratio</h3>
+            <div id="chart-audit" class="chart"></div>
+          </article>
+
+          <article class="card chart-card">
+            <h3 class="card-title">Projects pass / fail</h3>
+            <div id="chart-passfail" class="chart"></div>
+          </article>
+
+          <article class="card chart-card wide hidden" id="skills-card">
+            <h3 class="card-title">Best skills</h3>
+            <div id="chart-skills" class="chart"></div>
+          </article>
+        </section>
+
+      </div>
+    </main>
+  </section>
+
+  <div id="tooltip" class="tooltip hidden"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
