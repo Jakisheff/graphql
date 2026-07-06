@@ -1,5 +1,7 @@
 # GraphQL Profile
 
+**Live demo: https://jakisheff.github.io/graphql/**
+
 A personal profile dashboard for the [01 Tomorrow School](https://01.tomorrow-school.ai) platform, built by querying its GraphQL API. Plain HTML/CSS/JS — no framework, no build step. All graphs are hand-built SVG.
 
 ## Features
@@ -39,8 +41,11 @@ python3 -m http.server 8000
 
 The site is fully static, so any static host works:
 
-- **GitHub Pages**: push the repo to GitHub → Settings → Pages → deploy from the `main` branch, root folder.
-- **Netlify**: drag-and-drop the folder, or connect the repo (no build command, publish directory = repo root).
+Hosted on **GitHub Pages** at https://jakisheff.github.io/graphql/ (deployed from the `main` branch of [Jakisheff/graphql](https://github.com/Jakisheff/graphql), root folder). Any other static host (e.g. Netlify) works the same way: no build command, publish directory = repo root.
+
+## GraphiQL
+
+The profile embeds its own GraphiQL IDE at [graphiql.html](graphiql.html) (linked from the top bar once signed in). It reuses your session's JWT as Bearer auth, so you can explore the schema and run queries against your own data.
 
 ## Project structure
 
